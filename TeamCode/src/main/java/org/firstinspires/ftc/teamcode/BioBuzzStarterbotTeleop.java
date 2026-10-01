@@ -191,7 +191,7 @@ public class BioBuzzStarterbotTeleop extends OpMode {
          * both motors work to rotate the robot. Combinations of these inputs can be used to create
          * more complex maneuvers.
          */
-        arcadeDrive(-gamepad1.left_stick_y, gamepad1.right_stick_x);
+        arcadeDrive(-gamepad1.left_trigger, gamepad1.right_trigger);
 
         /*
          * Set the intake power variable to equal the right trigger, minus the left trigger.
@@ -205,7 +205,16 @@ public class BioBuzzStarterbotTeleop extends OpMode {
          * allow us to avoid setting the same motors/servos power more than once per loop. That can
          * create erratic behavior.
          */
-        intakePower = gamepad1.right_trigger - gamepad1.left_trigger;
+        if (gamepad1.left_bumper) {
+            intake.setPower(1);
+            rightIntakeServo.setPower(1);
+            leftIntakeServo.setPower(1);
+        } else {
+            intake.setPower(0);
+            rightIntakeServo.setPower(0);
+            leftIntakeServo.setPower(0);
+        }
+
 
         /*
          * The launch() function handles setting motor velocity, and running the windmill servo
@@ -220,9 +229,6 @@ public class BioBuzzStarterbotTeleop extends OpMode {
          * change the intake power. So we need to give our launch function a chance to modify the
          * variable before we write it to our motor and servos.
          */
-        intake.setPower(intakePower);
-        leftIntakeServo.setPower(intakePower);
-        rightIntakeServo.setPower(intakePower);
 
         /*
          * Show motor powers on the Driver Station via telemetry.
@@ -276,9 +282,10 @@ public class BioBuzzStarterbotTeleop extends OpMode {
          */
         if (gamepad1.right_bumper && launcher.getVelocity() > LAUNCHER_MIN_VELOCITY) {
             windmillServo.setPower(1);
-            intakePower += 0.5;
+            intake.setPower(0.5);
         } else {
             windmillServo.setPower(0);
+            intake.setPower(0);
         }
     }
 
