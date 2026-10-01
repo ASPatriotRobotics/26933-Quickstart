@@ -86,7 +86,6 @@ public class BioBuzzStarterbotTeleop extends OpMode {
     double rightPower;
 
     // Create a variable to set to the intake.
-    double intakePower;
 
     /*
      * Code to run ONCE when the driver hits INIT
