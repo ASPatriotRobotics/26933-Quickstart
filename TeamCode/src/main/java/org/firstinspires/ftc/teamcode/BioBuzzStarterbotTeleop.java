@@ -52,7 +52,6 @@ import com.qualcomm.robotcore.hardware.PIDFCoefficients;
 @TeleOp(name = "BioBuzz StarterBot Teleop", group = "StarterBot")
 //@Disabled
 public class BioBuzzStarterbotTeleop extends OpMode {
-
     // Declare OpMode members.
     private DcMotor leftRearDrive = null;
     private DcMotor rightRearDrive = null;
@@ -100,15 +99,15 @@ public class BioBuzzStarterbotTeleop extends OpMode {
          * to 'get' must correspond to the names assigned during the robot configuration
          * step.
          */
-        leftRearDrive = hardwareMap.get(DcMotor.class, "left_rear_drive");
-        rightRearDrive = hardwareMap.get(DcMotor.class, "right_rear_drive");
-        leftFrontDrive = hardwareMap.get(DcMotor.class, "left_front_drive");
-        rightFrontDrive = hardwareMap.get(DcMotor.class, "right_front_drive");
+        leftRearDrive = hardwareMap.get(DcMotor.class, "leftreardrive");
+        rightRearDrive = hardwareMap.get(DcMotor.class, "rightreardrive");
+        leftFrontDrive = hardwareMap.get(DcMotor.class, "leftfrontdrive");
+        rightFrontDrive = hardwareMap.get(DcMotor.class, "rightfrontdrive");
         intake = hardwareMap.get(DcMotor.class, "intake");
         launcher = hardwareMap.get(DcMotorEx.class, "launcher");
         windmillServo = hardwareMap.get(CRServo.class, "windmill");
-        leftIntakeServo = hardwareMap.get(CRServo.class, "left_intake_servo");
-        rightIntakeServo = hardwareMap.get(CRServo.class, "right_intake_servo");
+        leftIntakeServo = hardwareMap.get(CRServo.class, "leftintakeservo");
+        rightIntakeServo = hardwareMap.get(CRServo.class, "rightintakeservo");
 
         /*
          * To drive forward, most robots need the motor on one side to be reversed,
