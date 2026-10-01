@@ -190,6 +190,7 @@ public class BioBuzzStarterbotTeleop extends OpMode {
          * both motors work to rotate the robot. Combinations of these inputs can be used to create
          * more complex maneuvers.
          */
+
         arcadeDrive(-gamepad1.left_trigger, gamepad1.right_trigger);
 
         /*
@@ -256,7 +257,6 @@ public class BioBuzzStarterbotTeleop extends OpMode {
         leftFrontDrive.setPower(leftPower);
         rightFrontDrive.setPower(rightPower);
     }
-
     void launch() {
         /*
          * Calling gamepad1.right_bumper returns a boolean which will be true if the bumper is
