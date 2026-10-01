@@ -49,7 +49,7 @@ import com.qualcomm.robotcore.hardware.PIDFCoefficients;
  * we will also need to adjust the "PIDF" coefficients with some that are a better fit for our application.
  */
 
-@TeleOp(name = "BioBuzz StarterBot Teleop", group = "StarterBot")
+@TeleOp(name = "BioBuzzStarterbotTeleop", group = "BioBuzzStarterbotTeleop")
 //@Disabled
 public class BioBuzzStarterbotTeleop extends OpMode {
     // Declare OpMode members.
@@ -97,7 +97,7 @@ public class BioBuzzStarterbotTeleop extends OpMode {
         /*
          * Initialize the hardware variables. Note that the strings used here as parameters
          * to 'get' must correspond to the names assigned during the robot configuration
-         * step.
+         * step. I like burgers
          */
         leftRearDrive = hardwareMap.get(DcMotor.class, "leftreardrive");
         rightRearDrive = hardwareMap.get(DcMotor.class, "rightreardrive");
