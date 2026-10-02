@@ -115,10 +115,10 @@ public class BioBuzzStarterbotTeleop extends OpMode {
          * Note: The settings here assume direct drive on left and right wheels. Gear
          * Reduction or 90 Deg drives may require direction flips
          */
-        leftRearDrive.setDirection(DcMotor.Direction.FORWARD);
-        rightRearDrive.setDirection(DcMotor.Direction.REVERSE);
-        leftFrontDrive.setDirection(DcMotor.Direction.FORWARD);
-        rightFrontDrive.setDirection(DcMotor.Direction.REVERSE);
+        leftRearDrive.setDirection(DcMotor.Direction.REVERSE);
+        rightRearDrive.setDirection(DcMotor.Direction.FORWARD);
+        leftFrontDrive.setDirection(DcMotor.Direction.REVERSE);
+        rightFrontDrive.setDirection(DcMotor.Direction.FORWARD);
 
         /*
          * Setting zeroPowerBehavior to BRAKE enables a "brake mode". This causes the motor to
@@ -141,6 +141,7 @@ public class BioBuzzStarterbotTeleop extends OpMode {
         launcher.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
 
         launcher.setPIDFCoefficients(DcMotor.RunMode.RUN_USING_ENCODER, new PIDFCoefficients(40, 0, 0, 12.5));
+
 
         /*
          * set Feeders to an initial value to initialize the servo controller
@@ -191,7 +192,7 @@ public class BioBuzzStarterbotTeleop extends OpMode {
          * more complex maneuvers.
          */
 
-        arcadeDrive(-gamepad1.left_trigger, gamepad1.right_trigger);
+        arcadeDrive(-gamepad1.left_stick_y, gamepad1.right_stick_x);
 
         /*
          * Set the intake power variable to equal the right trigger, minus the left trigger.
@@ -220,7 +221,6 @@ public class BioBuzzStarterbotTeleop extends OpMode {
          * The launch() function handles setting motor velocity, and running the windmill servo
          * to feed the elements into the launcher wheel.
          */
-        launch();
 
         /*
          * Here we set our intake motor and servos to their intake power. The order of operations
