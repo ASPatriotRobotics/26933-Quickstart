@@ -75,8 +75,8 @@ public class BioBuzzStarterbotTeleop extends OpMode {
      * in the launch() function to only run the windmill servo when the motor is spinning fast
      * enough to make a successful throw.
      */
-    public final int LAUNCHER_TARGET_VELOCITY = 1250;
-    public final int LAUNCHER_MIN_VELOCITY = 1200;
+    public final int LAUNCHER_TARGET_VELOCITY = 1400;
+    public final int LAUNCHER_MIN_VELOCITY = 1350;
 
     /*
      * These two variables store the power we need to apply to the motors. In other cases, we may
@@ -192,7 +192,7 @@ public class BioBuzzStarterbotTeleop extends OpMode {
          * both motors work to rotate the robot. Combinations of these inputs can be used to create
          * more complex maneuvers.
          */
-        arcadeDrive(-gamepad1.left_stick_y, gamepad1.right_stick_x);
+        arcadeDrive(gamepad1.left_stick_y, gamepad1.right_stick_x);
 
         /*
          * Set the intake power variable to equal the right trigger, minus the left trigger.
@@ -228,6 +228,8 @@ public class BioBuzzStarterbotTeleop extends OpMode {
         /*
          * Show motor powers on the Driver Station via telemetry.
          */
+
+        telemetry.addData("launcher", "%.2f RPM", launcher.getVelocity());
         telemetry.addData("Motors", "left (%.2f), right (%.2f)", leftPower, rightPower);
         telemetry.addLine();
 
