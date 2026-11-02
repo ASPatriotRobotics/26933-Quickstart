@@ -180,7 +180,9 @@ public class BioBuzzAuton1 extends LinearOpMode {
         // Notes:   Reverse movement is obtained by setting a negative distance (not speed)
         //          holdHeading() is used after turns to let the heading stabilize
         //          Add a sleep(2000) after any step to keep the telemetry data visible for review
-
+        intake.setPower(1);
+        sleep(1000);
+        intake.setPower(0);
         driveStraight(DRIVE_SPEED, 24.0, 0.0);    // Drive Forward 24"
         turnToHeading( TURN_SPEED, 90.0);               // Turn  CW to -45 Degrees
         holdHeading( TURN_SPEED, 90.0, 0.5);   // Hold -45 Deg heading for a 1/2 second
