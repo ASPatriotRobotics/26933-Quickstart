@@ -130,7 +130,11 @@ public class BioBuzzAuton1 extends LinearOpMode {
         rightRearDrive = hardwareMap.get(DcMotor.class, "right_rear_drive");
         leftFrontDrive = hardwareMap.get(DcMotor.class, "left_front_drive");
         rightFrontDrive = hardwareMap.get(DcMotor.class, "right_front_drive");
-
+        intake = hardwareMap.get(DcMotor.class, "intake");
+        launcher = hardwareMap.get(DcMotorEx.class, "launcher");
+        windmillServo = hardwareMap.get(CRServo.class, "windmill");
+        leftIntakeServo = hardwareMap.get(CRServo.class, "left_intake_servo");
+        rightIntakeServo = hardwareMap.get(CRServo.class, "right_intake_servo");
         // To drive forward, most robots need the motor on one side to be reversed, because the axles point in opposite directions.
         // When run, this OpMode should start both motors driving forward. So adjust these two lines based on your first test drive.
         // Note: The settings here assume direct drive on left and right wheels.  Gear Reduction or 90 Deg drives may require direction flips
@@ -181,13 +185,12 @@ public class BioBuzzAuton1 extends LinearOpMode {
         //          holdHeading() is used after turns to let the heading stabilize
         //          Add a sleep(2000) after any step to keep the telemetry data visible for review
         intake.setPower(1);
-        sleep(1000);
+        sleep(500);
         intake.setPower(0);
-        driveStraight(DRIVE_SPEED, 48.0, 0.0);    // Drive Forward 24"
-        turnToHeading( TURN_SPEED, 90.0);               // Turn  CW to -45 Degrees
-        holdHeading( TURN_SPEED, 90.0, 0.5);   // Hold -45 Deg heading for a 1/2 second
-        driveStraight(DRIVE_SPEED, -5.0, 90.0);
-        driveStraight(DRIVE_SPEED, -18.0, 0.0);
+        driveStraight(DRIVE_SPEED, -54.0, 0.0);    // Drive Forward 24"
+        turnToHeading(TURN_SPEED, 90.0);               // Turn  CW to -45 Degrees
+        holdHeading(TURN_SPEED, 90.0, 0.5);
+        driveStraight(DRIVE_SPEED, 10.0, 90.0);
         launcher.setVelocity(1200);
         sleep(3000);
         windmillServo.setPower(1);
@@ -196,9 +199,9 @@ public class BioBuzzAuton1 extends LinearOpMode {
         windmillServo.setPower(0);
         driveStraight(DRIVE_SPEED, 18.0, 0.0);
         turnToHeading( TURN_SPEED, -90.0);
-        driveStraight(DRIVE_SPEED, 48.0, 0.0);
+        driveStraight(DRIVE_SPEED, -48.0, 0.0);
         sleep(2000);
-        driveStraight(DRIVE_SPEED, 2.0, 0.0);
+        driveStraight(DRIVE_SPEED, -2.0, 0.0);
         telemetry.addData("Path", "Complete");
         telemetry.update();
         sleep(1000);  // Pause to display last telemetry message.
