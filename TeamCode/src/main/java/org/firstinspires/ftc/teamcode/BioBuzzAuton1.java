@@ -187,7 +187,8 @@ public class BioBuzzAuton1 extends LinearOpMode {
         intake.setPower(1);
         sleep(500);
         intake.setPower(0);
-        driveStraight(DRIVE_SPEED, -54.0, 0.0);    // Drive Forward 24"
+        driveStraight(DRIVE_SPEED, -54.0, 0.0);
+        sleep(500);
         turnToHeading(TURN_SPEED, 90.0);               // Turn  CW to -45 Degrees
         holdHeading(TURN_SPEED, 90.0, 0.5);
         driveStraight(DRIVE_SPEED, 10.0, 90.0);
@@ -347,6 +348,10 @@ public class BioBuzzAuton1 extends LinearOpMode {
 
             // Clip the speed to the maximum permitted value.
             turnSpeed = Range.clip(turnSpeed, -maxTurnSpeed, maxTurnSpeed);
+
+            telemetry.addData("Current Timer", holdTimer.time());
+            telemetry.addData("Max Timer", holdTime);
+            telemetry.update();
 
             // Pivot in place by applying the turning correction
             moveRobot(0, turnSpeed);
