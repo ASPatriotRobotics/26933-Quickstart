@@ -184,25 +184,29 @@ public class BioBuzzAuton1 extends LinearOpMode {
         // Notes:   Reverse movement is obtained by setting a negative distance (not speed)
         //          holdHeading() is used after turns to let the heading stabilize
         //          Add a sleep(2000) after any step to keep the telemetry data visible for review
-        intake.setPower(1);
+        intake.setPower(1.0);
         sleep(500);
-        intake.setPower(0);
+        intake.setPower(0.0);
         driveStraight(DRIVE_SPEED, 54.0, 0.0);
         sleep(500);
         turnToHeading(TURN_SPEED, -90.0);               // Turn  CW to -45 Degrees
         holdHeading(TURN_SPEED, -90.0, 0.5);
-        driveStraight(DRIVE_SPEED, -10.0, -90.0);
-        launcher.setVelocity(1200);
-        sleep(3000);
-        windmillServo.setPower(1);
-        sleep(5000);
+        driveStraight(DRIVE_SPEED, 8.0, -90.0);
+        launcher.setVelocity(1300);
+        intake.setPower(0.5);
+        sleep(4000);
+        windmillServo.setPower(-1.0);
+        sleep(4000);
         launcher.setVelocity(0);
         windmillServo.setPower(0);
+        intake.setPower(0);
         driveStraight(DRIVE_SPEED, -18.0, 90.0);
+        turnToHeading(TURN_SPEED, -180);
+        driveStraight(DRIVE_SPEED, 40.0, -180.0);
         turnToHeading(TURN_SPEED, 90.0);
-        driveStraight(DRIVE_SPEED, 48.0, 0.0);
-        sleep(2000);
-        driveStraight(DRIVE_SPEED, 2.0, 0.0);
+        driveStraight(DRIVE_SPEED, 72.0, 90.0);
+        turnToHeading(TURN_SPEED, -180);
+        driveStraight(DRIVE_SPEED, 12.0, 90.0);
         telemetry.addData("Path", "Complete");
         telemetry.update();
         sleep(1000);  // Pause to display last telemetry message.
@@ -304,7 +308,7 @@ public class BioBuzzAuton1 extends LinearOpMode {
         getSteeringCorrection(heading, P_DRIVE_GAIN);
 
         // keep looping while we are still active, and not on heading.
-        while (opModeIsActive() && Math.abs(turnSpeed) > 0.1) {
+        while (opModeIsActive() && Math.abs(headingError) > HEADING_THRESHOLD) {
 
             // Determine required steering to keep on heading
             turnSpeed = getSteeringCorrection(heading, P_TURN_GAIN);
