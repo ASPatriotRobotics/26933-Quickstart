@@ -183,16 +183,22 @@ public class BioBuzzAuton1 extends LinearOpMode {
         intake.setPower(1);
         sleep(1000);
         intake.setPower(0);
-        driveStraight(DRIVE_SPEED, 24.0, 0.0);    // Drive Forward 24"
+        driveStraight(DRIVE_SPEED, 48.0, 0.0);    // Drive Forward 24"
         turnToHeading( TURN_SPEED, 90.0);               // Turn  CW to -45 Degrees
         holdHeading( TURN_SPEED, 90.0, 0.5);   // Hold -45 Deg heading for a 1/2 second
         driveStraight(DRIVE_SPEED, -5.0, 90.0);
+        driveStraight(DRIVE_SPEED, -18.0, 0.0);
         launcher.setVelocity(1200);
-        sleep(2000);
+        sleep(3000);
         windmillServo.setPower(1);
-        sleep(7500);
+        sleep(5000);
         launcher.setVelocity(0);
         windmillServo.setPower(0);
+        driveStraight(DRIVE_SPEED, 18.0, 0.0);
+        turnToHeading( TURN_SPEED, -90.0);
+        driveStraight(DRIVE_SPEED, 48.0, 0.0);
+        sleep(2000);
+        driveStraight(DRIVE_SPEED, 2.0, 0.0);
         telemetry.addData("Path", "Complete");
         telemetry.update();
         sleep(1000);  // Pause to display last telemetry message.
