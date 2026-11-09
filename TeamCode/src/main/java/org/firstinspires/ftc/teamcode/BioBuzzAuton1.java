@@ -112,7 +112,7 @@ public class BioBuzzAuton1 extends LinearOpMode {
     // They can/should be tweaked to suit the specific robot drive train.
     static final double     DRIVE_SPEED             = 0.4;     // Max driving speed for better distance accuracy.
     static final double     TURN_SPEED              = 0.2;     // Max turn speed to limit turn rate.
-    static final double     HEADING_THRESHOLD       = 1.0 ;    // How close must the heading get to the target before moving to next step.
+    static final double     HEADING_THRESHOLD       = 2.0 ;    // How close must the heading get to the target before moving to next step.
     // Requiring more accuracy (a smaller number) will often make the turn take longer to get into the final position.
     // Define the Proportional control coefficient (or GAIN) for "heading control".
     // We define one value when Turning (larger errors), and the other is used when Driving straight (smaller errors).
@@ -138,10 +138,10 @@ public class BioBuzzAuton1 extends LinearOpMode {
         // To drive forward, most robots need the motor on one side to be reversed, because the axles point in opposite directions.
         // When run, this OpMode should start both motors driving forward. So adjust these two lines based on your first test drive.
         // Note: The settings here assume direct drive on left and right wheels.  Gear Reduction or 90 Deg drives may require direction flips
-        leftRearDrive.setDirection(DcMotor.Direction.FORWARD);
-        rightRearDrive.setDirection(DcMotor.Direction.REVERSE);
-        leftFrontDrive.setDirection(DcMotor.Direction.FORWARD);
-        rightFrontDrive.setDirection(DcMotor.Direction.REVERSE);
+        leftRearDrive.setDirection(DcMotor.Direction.REVERSE);
+        rightRearDrive.setDirection(DcMotor.Direction.FORWARD);
+        leftFrontDrive.setDirection(DcMotor.Direction.REVERSE);
+        rightFrontDrive.setDirection(DcMotor.Direction.FORWARD);
 
         /* The next two lines define Hub orientation.
          * The Default Orientation (shown) is when a hub is mounted horizontally with the printed logo pointing UP and the USB port pointing FORWARD.
@@ -187,22 +187,22 @@ public class BioBuzzAuton1 extends LinearOpMode {
         intake.setPower(1);
         sleep(500);
         intake.setPower(0);
-        driveStraight(DRIVE_SPEED, -54.0, 0.0);
+        driveStraight(DRIVE_SPEED, 54.0, 0.0);
         sleep(500);
-        turnToHeading(TURN_SPEED, 90.0);               // Turn  CW to -45 Degrees
-        holdHeading(TURN_SPEED, 90.0, 0.5);
-        driveStraight(DRIVE_SPEED, 10.0, 90.0);
+        turnToHeading(TURN_SPEED, -90.0);               // Turn  CW to -45 Degrees
+        holdHeading(TURN_SPEED, -90.0, 0.5);
+        driveStraight(DRIVE_SPEED, -10.0, -90.0);
         launcher.setVelocity(1200);
         sleep(3000);
         windmillServo.setPower(1);
         sleep(5000);
         launcher.setVelocity(0);
         windmillServo.setPower(0);
-        driveStraight(DRIVE_SPEED, 18.0, 0.0);
-        turnToHeading( TURN_SPEED, -90.0);
-        driveStraight(DRIVE_SPEED, -48.0, 0.0);
+        driveStraight(DRIVE_SPEED, -18.0, 90.0);
+        turnToHeading(TURN_SPEED, 90.0);
+        driveStraight(DRIVE_SPEED, 48.0, 0.0);
         sleep(2000);
-        driveStraight(DRIVE_SPEED, -2.0, 0.0);
+        driveStraight(DRIVE_SPEED, 2.0, 0.0);
         telemetry.addData("Path", "Complete");
         telemetry.update();
         sleep(1000);  // Pause to display last telemetry message.
@@ -304,7 +304,7 @@ public class BioBuzzAuton1 extends LinearOpMode {
         getSteeringCorrection(heading, P_DRIVE_GAIN);
 
         // keep looping while we are still active, and not on heading.
-        while (opModeIsActive() && (Math.abs(headingError) > HEADING_THRESHOLD)) {
+        while (opModeIsActive() && Math.abs(turnSpeed) > 0.1) {
 
             // Determine required steering to keep on heading
             turnSpeed = getSteeringCorrection(heading, P_TURN_GAIN);
@@ -357,7 +357,7 @@ public class BioBuzzAuton1 extends LinearOpMode {
             moveRobot(0, turnSpeed);
 
             // Display drive status for the driver.
-            sendTelemetry(false);
+            //sendTelemetry(false);
         }
 
         // Stop all motion;
