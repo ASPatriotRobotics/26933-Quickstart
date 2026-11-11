@@ -281,6 +281,9 @@ public class BioBuzzStarterbotTeleop extends OpMode {
         } else {
             windmillServo.setPower(0);
         }
+        telemetry.addData("windmill:", windmillServo.getPower());
+        telemetry.addData("launcher: ", launcher.getVelocity());
+        telemetry.addLine();
     }
 
 
