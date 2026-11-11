@@ -142,7 +142,7 @@ public class BioBuzzStarterbotTeleop extends OpMode {
          */
         launcher.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
 
-        launcher.setPIDFCoefficients(DcMotor.RunMode.RUN_USING_ENCODER, new PIDFCoefficients(40, 0, 0, 12.5));
+        launcher.setPIDFCoefficients(DcMotor.RunMode.RUN_USING_ENCODER, new PIDFCoefficients(40,  0, 0, 12.5));
 
         /*
          * set Feeders to an initial value to initialize the servo controller
