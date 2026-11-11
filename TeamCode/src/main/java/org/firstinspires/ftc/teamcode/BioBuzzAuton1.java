@@ -10,7 +10,6 @@ import com.qualcomm.robotcore.hardware.CRServo;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.DcMotorEx;
 import com.qualcomm.robotcore.hardware.IMU;
-import com.qualcomm.robotcore.hardware.PIDFCoefficients;
 import com.qualcomm.robotcore.util.ElapsedTime;
 import com.qualcomm.robotcore.util.Range;
 import org.firstinspires.ftc.robotcore.external.navigation.AngleUnit;
@@ -45,7 +44,7 @@ import org.firstinspires.ftc.robotcore.external.navigation.YawPitchRollAngles;
  *  Note: It would be possible to reset the heading after each move, but this would accumulate steering errors.
  *
  *  The angle of movement/rotation is assumed to be a standardized rotation around the robot Z axis,
- *  which means that a Positive rotation is CounterClockwise, looking down on the field.
+ *  which means that a Positive rotation is Counter Clockwise, looking down on the field.
  *  This is consistent with the FTC field coordinate conventions set out in the document:
  *  https://ftc-docs.firstinspires.org/field-coordinate-system
  *
@@ -64,9 +63,9 @@ import org.firstinspires.ftc.robotcore.external.navigation.YawPitchRollAngles;
  *  Remove or comment out the @Disabled line to add this OpMode to the Driver Station OpMode list
  */
 
-@Autonomous(name="Nova Auto", group="Robot")
-//@Disabled
-public class BioBuzzAutonNova extends LinearOpMode {
+@Autonomous(name="First Auto", group="Robot")
+@Disabled
+public class BioBuzzAuton1 extends LinearOpMode {
 
     /* Declare OpMode members. */
     private DcMotor leftRearDrive = null;
@@ -131,6 +130,7 @@ public class BioBuzzAutonNova extends LinearOpMode {
         rightRearDrive = hardwareMap.get(DcMotor.class, "right_rear_drive");
         leftFrontDrive = hardwareMap.get(DcMotor.class, "left_front_drive");
         rightFrontDrive = hardwareMap.get(DcMotor.class, "right_front_drive");
+
         // To drive forward, most robots need the motor on one side to be reversed, because the axles point in opposite directions.
         // When run, this OpMode should start both motors driving forward. So adjust these two lines based on your first test drive.
         // Note: The settings here assume direct drive on left and right wheels.  Gear Reduction or 90 Deg drives may require direction flips
@@ -156,21 +156,6 @@ public class BioBuzzAutonNova extends LinearOpMode {
         // Ensure the robot is stationary.  Reset the encoders and set the motors to BRAKE mode
         leftRearDrive.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
         rightRearDrive.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
-
-
-
-
-
-
-
-        launcher.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
-
-        launcher.setPIDFCoefficients(DcMotor.RunMode.RUN_USING_ENCODER, new PIDFCoefficients(40,  0, 0, 12.5));
-        windmillServo.setPower(0);
-        launcher.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
-
-        launcher.setPIDFCoefficients(DcMotor.RunMode.RUN_USING_ENCODER, new PIDFCoefficients(40,  0, 0, 12.5));
-        intake.setZeroPowerBehavior(BRAKE);
         leftFrontDrive.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
         rightFrontDrive.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
         leftRearDrive.setZeroPowerBehavior(BRAKE);
