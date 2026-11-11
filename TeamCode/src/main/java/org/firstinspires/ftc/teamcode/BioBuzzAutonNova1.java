@@ -64,7 +64,7 @@ import org.firstinspires.ftc.robotcore.external.navigation.YawPitchRollAngles;
  */
 
 @Autonomous(name="First Auto", group="Robot")
-@Disabled
+//@Disabled
 public class BioBuzzAutonNova1 extends LinearOpMode {
 
     /* Declare OpMode members. */
