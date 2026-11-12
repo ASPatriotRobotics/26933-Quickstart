@@ -192,7 +192,7 @@ public class BioBuzzAuton1 extends LinearOpMode {
         turnToHeading(TURN_SPEED, -90.0);               // Turn  CW to -45 Degrees
         holdHeading(TURN_SPEED, -90.0, 0.5);
         driveStraight(DRIVE_SPEED, 8.0, -90.0);
-        launcher.setVelocity(1250);
+        launcher.setVelocity(1205);
         intake.setPower(1.0);
         sleep(4000);
         windmillServo.setPower(-1.0);
