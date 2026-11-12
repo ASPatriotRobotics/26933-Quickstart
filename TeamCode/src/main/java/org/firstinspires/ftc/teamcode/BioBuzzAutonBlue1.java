@@ -187,12 +187,12 @@ public class BioBuzzAutonBlue1 extends LinearOpMode {
         intake.setPower(1.0);
         sleep(500);
         intake.setPower(0.0);
-        driveStraight(DRIVE_SPEED, 54.0, 0.0);
+        driveStraight(DRIVE_SPEED, 48.0, 0.0);
         sleep(500);
-        turnToHeading(TURN_SPEED, 90.0);               // Turn  CW to -45 Degrees
-        holdHeading(TURN_SPEED, 90.0, 0.5);
-        driveStraight(DRIVE_SPEED, 8.0, 90.0);
-        launcher.setVelocity(1250);
+        turnToHeading(TURN_SPEED, -90.0);               // Turn  CW to -45 Degrees
+        holdHeading(TURN_SPEED, -90.0, 0.5);
+        driveStraight(DRIVE_SPEED, 8.0, -90.0);
+        launcher.setVelocity(1175);
         intake.setPower(1.0);
         sleep(4000);
         windmillServo.setPower(-1.0);
@@ -201,12 +201,12 @@ public class BioBuzzAutonBlue1 extends LinearOpMode {
         windmillServo.setPower(0);
         intake.setPower(0);
         driveStraight(DRIVE_SPEED, -18.0, 90.0);
+        turnToHeading(TURN_SPEED, -180);
+        driveStraight(DRIVE_SPEED, 40.0, -180.0);
+        turnToHeading(TURN_SPEED, 90.0);
+        driveStraight(DRIVE_SPEED, 72.0, 90.0);
         turnToHeading(TURN_SPEED, 180);
-        driveStraight(DRIVE_SPEED, 40.0, 180.0);
-        turnToHeading(TURN_SPEED, -90.0);
-        driveStraight(DRIVE_SPEED, 72.0, -90.0);
-        turnToHeading(TURN_SPEED, 180);
-        driveStraight(DRIVE_SPEED, 12.0, 180.0);
+        driveStraight(DRIVE_SPEED, 6.0, 180.0);
         telemetry.addData("Path", "Complete");
         telemetry.update();
         sleep(1000);  // Pause to display last telemetry message.
