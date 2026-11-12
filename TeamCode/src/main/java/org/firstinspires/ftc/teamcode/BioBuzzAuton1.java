@@ -63,7 +63,7 @@ import org.firstinspires.ftc.robotcore.external.navigation.YawPitchRollAngles;
  *  Remove or comment out the @Disabled line to add this OpMode to the Driver Station OpMode list
  */
 
-@Autonomous(name="RED Auto", group="Robot")
+@Autonomous(name="First Auto", group="Robot")
 
 public class BioBuzzAuton1 extends LinearOpMode {
 
